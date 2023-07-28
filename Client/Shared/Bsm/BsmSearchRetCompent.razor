@@ -1,0 +1,36 @@
+﻿@if (Func == "" || Text == "")
+{
+	<div class="mb-3 display-5 d-flex justify-content-center">
+		<span class="text-danger">错误 1秒后自动返回</span>
+	</div>
+}
+
+
+@code {
+	[Inject]
+	public NavigationManager MyNavMannager { get; set; }
+	[Parameter]
+	[SupplyParameterFromQuery]
+	public string Func { get; set; }
+
+	[Parameter]
+	[SupplyParameterFromQuery]
+	public string Text { get; set; }
+	private void GoBack(Object source, ElapsedEventArgs e)
+	{
+		Console.WriteLine("done");
+		MyNavMannager.NavigateTo("/Bsm");
+	}
+
+	protected override void OnInitialized()
+	{
+		if (Func == "" || Text == "")
+		{
+			System.Timers.Timer timer = new(1000);
+			timer.Elapsed += GoBack;
+			timer.AutoReset = false;
+			timer.Start();
+		}
+	}
+	
+}

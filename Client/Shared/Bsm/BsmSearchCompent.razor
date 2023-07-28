@@ -11,12 +11,12 @@
 
 @code {
     private string? searchText;
-
     [Inject]
-    private NavigationManager NavigationManager { get; set; }
+    public NavigationManager MyNavMannager { get; set; }
+
     private void ToBsmSearch()
     {
-        if(searchText!=null)
-            NavigationManager.NavigateTo($"/Bsm/Search?Func=&Text={searchText}");
+        if (searchText != null && MyNavMannager != null)
+            MyNavMannager.NavigateTo($"/Bsm/Search?Func=&Text={searchText}");
     }
 }

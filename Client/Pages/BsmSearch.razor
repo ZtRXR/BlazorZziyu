@@ -1,6 +1,12 @@
 ﻿@page "/Bsm/Search"
-<h3>BsmSearch</h3>
+<BsmSearchRetCompent Func=@Func Text=@Text/>
 
 @code {
+	[Parameter]
+	[SupplyParameterFromQuery]
+	public string? Func { get; set; }
 
+	[Parameter]
+	[SupplyParameterFromQuery]
+	public string? Text { get; set; }
 }
