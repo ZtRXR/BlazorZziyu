@@ -20,7 +20,7 @@ namespace BrazorZziyu.Server.Controllers
 		}
 
 		[HttpGet]
-		public IEnumerable<WeatherForecast> Get()
+		public List<WeatherForecast> Get()
 		{
 			return Enumerable.Range(1, 5).Select(index => new WeatherForecast
 			{
@@ -28,7 +28,7 @@ namespace BrazorZziyu.Server.Controllers
 				TemperatureC = Random.Shared.Next(-20, 55),
 				Summary = Summaries[Random.Shared.Next(Summaries.Length)]
 			})
-			.ToArray();
+			.ToList();
 		}
 	}
 }
